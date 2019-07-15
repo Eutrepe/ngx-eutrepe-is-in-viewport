@@ -119,6 +119,41 @@
           }
         }
       }
+    },
+    "NgxEutrepeIsInViewport": {
+      "projectType": "library",
+      "root": "projects/ngx-eutrepe-is-in-viewport",
+      "sourceRoot": "projects/ngx-eutrepe-is-in-viewport/src",
+      "prefix": "NgxEutrepe",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-eutrepe-is-in-viewport/tsconfig.lib.json",
+            "project": "projects/ngx-eutrepe-is-in-viewport/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-eutrepe-is-in-viewport/src/test.ts",
+            "tsConfig": "projects/ngx-eutrepe-is-in-viewport/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-eutrepe-is-in-viewport/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-eutrepe-is-in-viewport/tsconfig.lib.json",
+              "projects/ngx-eutrepe-is-in-viewport/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "EutrepeIsInViewpoer"
 }

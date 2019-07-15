@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-eutrepe-is-in-viewport": [
+        "dist/ngx-eutrepe-is-in-viewport"
+      ],
+      "ngx-eutrepe-is-in-viewport/*": [
+        "dist/ngx-eutrepe-is-in-viewport/*"
+      ]
+    }
   }
 }
