@@ -1,11 +1,10 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppComponent } from './app.component';
 
-import { WINDOW } from './modules/windowToken/window-token';
 import { NgxEutrepeIsInViewportModule } from './modules/ngx-eutrepe-is-in-viewport.module';
-import { NgxEutrepeIsInViewportService } from './modules/ngx-eutrepe-is-in-viewport.service';
 
 @NgModule({
     declarations: [
@@ -16,13 +15,8 @@ import { NgxEutrepeIsInViewportService } from './modules/ngx-eutrepe-is-in-viewp
         BrowserAnimationsModule,
         NgxEutrepeIsInViewportModule
     ],
-    providers: [
-      {provide: WINDOW, useValue: window},
-      NgxEutrepeIsInViewportService
-    ],
+    providers: [ ],
     bootstrap: [ AppComponent ],
     exports: []
 })
-export class AppModule {
-}
-
+export class AppModule { }
