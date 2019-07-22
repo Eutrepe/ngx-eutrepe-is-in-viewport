@@ -1,4 +1,4 @@
-## ngxEutrepeScrollTo - v4.0.0 (22/07/2019)
+## ngxEutrepeIsInViewport - v4.0.0 (22/07/2019)
 
 ### New Features:
 

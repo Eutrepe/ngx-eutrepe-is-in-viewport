@@ -12,7 +12,7 @@ export interface IViewportEvent  {
 }
 
 @Directive({
-  selector: '[ngxEutrepeNgxEutrepeIsInViewport]'
+  selector: '[ngxEutrepeIsInViewport]'
 })
 export class NgxEutrepeIsInViewportDirective implements AfterViewInit, OnDestroy, OnInit {
 
@@ -21,7 +21,7 @@ export class NgxEutrepeIsInViewportDirective implements AfterViewInit, OnDestroy
   @Input() eutrepeOnActiveCallbackParams                              : Array<any>          = [];
   @Input() eutrepeOnUnactiveCallbackParams                            : Array<any>          = [];
   @Input() eutrepeInvokeOnce                                          : boolean             = true;
-  @Input('ngxEutrepeNgxEutrepeIsInViewport') eutrepeIntersectionConfig: IIntersectionConfig = {};
+  @Input('ngxEutrepeIsInViewport') eutrepeIntersectionConfig          : IIntersectionConfig = {};
 
   @Output() eutrepeViewportChange: EventEmitter<IViewportEvent> = new EventEmitter();
 

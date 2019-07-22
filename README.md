@@ -20,7 +20,7 @@ and add this in your `src/polyfills.ts` file
 
 | Input                               | Type                 | Required                              | Description                                                            |
 | ----------------------------------- | -------------------- | ------------------------------------- | ---------------------------------------------------------------------- |
-| [ngxEutrepeNgxEutrepeIsInViewport]  | IIntersectionConfig  | **YES** , default config below table  | Run the plugin with user configuration or default configuration        |
+| [ngxEutrepeIsInViewport]            | IIntersectionConfig  | **YES** , default config below table  | Run the plugin with user configuration or default configuration        |
 | [eutrepeInvokeOnce]                 | boolean              | Optional, default: true               | If true directive invoke just once                                     |
 | [eutrepeOnActiveCallback]           | Function             | Optional, default: null               | The function is started when element is in viewport                    |
 | [eutrepeOnUnactiveCallback]         | Function             | Optional, default: null               | The function is started when element is out viewport                   |
@@ -41,7 +41,7 @@ const defaultConfig: IIntersectionConfig = {
 # Usage
 
 ### 1) Register the `NgxEutrepeIsInViewportModule` in your app module.
- > `import { NgxEutrepeScrollToDirective } from '@eutrepe/is-in-viewport'`
+ > `import { NgxEutrepeIsInViewportModule } from '@eutrepe/is-in-viewport'`
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -69,14 +69,14 @@ export class AppModule { }
 ```
  <br /><br />
 
- ### 2) Use the directive `(ngxEutrepeNgxEutrepeIsInViewport)`
+ ### 2) Use the directive `(ngxEutrepeIsInViewport)`
 
  If element is visible in viewport the directive add `in-viewport` class to the element, otherwise add `out-viewport`
 
 #### Basic
 
  ```html
-<section class="section1" ngxEutrepeNgxEutrepeIsInViewport>
+<section class="section1" ngxEutrepeIsInViewport>
   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum, facere.</p>
 </section>
 ```
@@ -85,7 +85,7 @@ export class AppModule { }
 
  ```html
 <section class="section1"
-    [ngxEutrepeNgxEutrepeIsInViewport]="{threshold: [0, 0.5, 1]}"
+    [ngxEutrepeIsInViewport]="{threshold: [0, 0.5, 1]}"
     [eutrepeOnActiveCallback]="onActive.bind(this)"
     [eutrepeOnUnactiveCallback]="onUnactive.bind(this)"
     [eutrepeOnActiveCallbackParams]="['some_text', 1, true]"
@@ -113,7 +113,7 @@ export interface IIntersectionConfig  {
 }
 ```
 
-### ngxEutrepeNgxEutrepeIsInViewport config:
+### ngxEutrepeIsInViewport config:
 
 ```typescript
 export interface IViewportEvent  {
