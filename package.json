@@ -25,6 +25,7 @@
     "@uirouter/angular": "^1.0.1",
     "angular-scroll": "^1.0.2",
     "core-js": "^2.5.3",
+    "intersection-observer": "^0.7.0",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },
