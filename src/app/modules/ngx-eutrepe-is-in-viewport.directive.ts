@@ -1,4 +1,7 @@
-import { Directive, Output, HostBinding, AfterViewInit, OnDestroy, OnInit, ElementRef, EventEmitter, Input } from '@angular/core';
+import { Directive, Output, HostBinding, AfterViewInit, OnDestroy, OnInit, ElementRef, EventEmitter, Input, Inject } from '@angular/core';
+
+import { WINDOW } from './windowToken/window-token';
+import { DOCUMENT } from '@angular/common';
 
 export interface IIntersectionConfig  {
   root?: HTMLElement;
@@ -20,8 +23,8 @@ export class NgxEutrepeIsInViewportDirective implements AfterViewInit, OnDestroy
   @Input() eutrepeOnUnactiveCallback                                  : Function            = null;
   @Input() eutrepeOnActiveCallbackParams                              : Array<any>          = [];
   @Input() eutrepeOnUnactiveCallbackParams                            : Array<any>          = [];
-  @Input() eutrepeInvokeOnce                                          : boolean             = true;
-  @Input() eutrepeInvokeOnceCallbacks                                 : boolean             = true;
+  @Input() eutrepeInvokeOnce                                          : boolean             = false;
+  @Input() eutrepeActiveClass                                         : string              = 'in-viewport';
   @Input('ngxEutrepeIsInViewport') eutrepeIntersectionConfig          : IIntersectionConfig = {};
 
   @Output() eutrepeViewportChange: EventEmitter<IViewportEvent> = new EventEmitter();
@@ -34,25 +37,37 @@ export class NgxEutrepeIsInViewportDirective implements AfterViewInit, OnDestroy
 
   private defaultConfig: IIntersectionConfig = {
     root      : null,
-    rootMargin: '0px',
+    rootMargin: '0',
     threshold : [0]
   };
 
-  // @HostBinding('class.in-viewport')
-  // get getActiveClass(): boolean {
-  //   console.log(this.isInVewport);
-  //   return this.isInVewport;
-  // }
-
-  // @HostBinding('class.out-viewport')
-  // get getUnactiveClass(): boolean {
-  //   console.log(this.isInVewport);
-  //   return !this.isInVewport;
-  // }
 
   constructor(
+    @Inject(WINDOW) private window: Window,
+    @Inject(DOCUMENT) private document: Document,
     private el: ElementRef
-  ) { }
+  ) {
+    if (!this.window) {
+      this.window = this.document.defaultView;
+    }
+
+    this.edgePolyfill();
+  }
+
+
+  private edgePolyfill() {
+    if ('IntersectionObserver' in this.window &&
+      'IntersectionObserverEntry' in this.window &&
+      'intersectionRatio' in this.window['IntersectionObserverEntry']['prototype'] &&
+      !('isIntersecting' in IntersectionObserverEntry.prototype)) {
+
+      Object.defineProperty(this.window['IntersectionObserverEntry']['prototype'], 'isIntersecting', {
+        get: function () {
+          return this.intersectionRatio > 0
+        }
+      })
+    }
+  }
 
 
   ngOnInit() {
@@ -61,18 +76,15 @@ export class NgxEutrepeIsInViewportDirective implements AfterViewInit, OnDestroy
 
   ngAfterViewInit() {
     this.observer = new IntersectionObserver(
-     (entries: Array<IntersectionObserverEntry>) => {
+     (entries: Array<any>) => {
         entries.forEach( (entry: any) => {
-
-          // console.log(entry.isIntersecting)
 
           if (entry.isIntersecting) {
             if (this.eutrepeInvokeOnce && this.observer) {
               this.observer.unobserve(this.el.nativeElement);
             }
 
-            // console.log('a')
-            entry.target.classList.add('in-viewport');
+            entry.target.classList.add(this.eutrepeActiveClass);
 
             this.wasActived  = true;
             this.isInVewport = true;
@@ -91,17 +103,12 @@ export class NgxEutrepeIsInViewportDirective implements AfterViewInit, OnDestroy
               el: this.el.nativeElement,
               status: this.isInVewport
             });
-            // console.log('b')
-            entry.target.classList.remove('in-viewport');
+            entry.target.classList.remove(this.eutrepeActiveClass);
 
             if (this.wasActived && this.eutrepeOnUnactiveCallback && typeof(this.eutrepeOnUnactiveCallback) === 'function') {
               this.eutrepeOnUnactiveCallback(...this.eutrepeOnUnactiveCallbackParams);
             }
           }
-
-
-          // this.isInVewport = entry.intersectionRatio > 0;
-
         });
      }, this.settings
     );
