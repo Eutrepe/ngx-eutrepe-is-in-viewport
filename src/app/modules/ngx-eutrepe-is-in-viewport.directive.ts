@@ -37,7 +37,7 @@ export class NgxEutrepeIsInViewportDirective implements AfterViewInit, OnDestroy
 
   private defaultConfig: IIntersectionConfig = {
     root      : null,
-    rootMargin: '0',
+    rootMargin: '0px',
     threshold : [0]
   };
 
@@ -73,6 +73,7 @@ export class NgxEutrepeIsInViewportDirective implements AfterViewInit, OnDestroy
   ngOnInit() {
     this.settings = {...this.defaultConfig, ...this.eutrepeIntersectionConfig};
   }
+
 
   ngAfterViewInit() {
     this.observer = new IntersectionObserver(

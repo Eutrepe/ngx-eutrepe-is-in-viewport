@@ -1,3 +1,14 @@
+## ngxEutrepeIsInViewport - v4.1.0 (23/07/2019)
+
+### New Features:
+
+* Now developer can add custom active class
+
+### Fixed
+
+* Fix bug with active status when user slowly scrolling
+
+
 ## ngxEutrepeIsInViewport - v4.0.0 (22/07/2019)
 
 ### New Features:

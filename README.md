@@ -14,30 +14,6 @@ and add this in your `src/polyfills.ts` file
 
 `import 'intersection-observer';`
 
-# API
-
-#### Directive:
-
-| Input                               | Type                 | Required                              | Description                                                            |
-| ----------------------------------- | -------------------- | ------------------------------------- | ---------------------------------------------------------------------- |
-| [ngxEutrepeIsInViewport]            | IIntersectionConfig  | **YES** , default config below table  | Run the plugin with user configuration or default configuration        |
-| [eutrepeInvokeOnce]                 | boolean              | Optional, default: true               | If true directive invoke just once                                     |
-| [eutrepeOnActiveCallback]           | Function             | Optional, default: null               | The function is started when element is in viewport                    |
-| [eutrepeOnUnactiveCallback]         | Function             | Optional, default: null               | The function is started when element is out viewport                   |
-| [eutrepeOnActiveCallbackParams]     | Array                | Optional, default: []                 | Array of custom argumments for onActive callback                       |
-| [eutrepeOnUnactiveCallbackParams]   | Array                | Optional, default: []                 | Array of custom argumments for onUnactive callback                     |
-
-
-```typescript
-const defaultConfig: IIntersectionConfig = {
-    root      : null,
-    rootMargin: '0px',
-    threshold : [0]
-  }
-```
-
-<br />
-
 # Usage
 
 ### 1) Register the `NgxEutrepeIsInViewportModule` in your app module.
@@ -51,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 
 import { NgxEutrepeIsInViewportModule } from '@eutrepe/is-in-viewport';
+import { WINDOW } from '@eutrepe/is-in-viewport';
 
 @NgModule({
     declarations: [
@@ -61,7 +38,9 @@ import { NgxEutrepeIsInViewportModule } from '@eutrepe/is-in-viewport';
         BrowserAnimationsModule,
         NgxEutrepeIsInViewportModule
     ],
-    providers: [ ],
+     providers: [
+      {provide: WINDOW, useValue: window},
+    ],
     bootstrap: [ AppComponent ],
     exports: []
 })
@@ -71,7 +50,7 @@ export class AppModule { }
 
  ### 2) Use the directive `(ngxEutrepeIsInViewport)`
 
- If element is visible in viewport the directive add `in-viewport` class to the element, otherwise add `out-viewport`
+ If element is visible in viewport the directive add `in-viewport` class to the element or custom class
 
 #### Basic
 
@@ -91,6 +70,7 @@ export class AppModule { }
     [eutrepeOnActiveCallbackParams]="['some_text', 1, true]"
     [eutrepeOnUnactiveCallbackParams]="[100, false]"
     [eutrepeInvokeOnce]="false"
+    [eutrepeActiveClass]="'my-class'"
     (eutrepeViewportChange)="onChanage($event)"
     >
   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum, facere.</p>
@@ -99,6 +79,36 @@ export class AppModule { }
 <!-- Use .bind(this) for callbacks if you want use scoped variables -->
 
 ```
+
+# API
+
+#### Directive:
+
+| Input                               | Type                 | Required                              | Description                                                            |
+| ----------------------------------- | -------------------- | ------------------------------------- | ---------------------------------------------------------------------- |
+| [ngxEutrepeIsInViewport]            | IIntersectionConfig  | **YES** , default Intersection Observe configuration* | Run the plugin with user configuration or default configuration        |
+| [eutrepeInvokeOnce]                 | boolean              | Optional, default: true               | If true directive invoke just once                                     |
+| [eutrepeOnActiveCallback]           | Function             | Optional, default: null               | The function is started when element is in viewport                    |
+| [eutrepeOnUnactiveCallback]         | Function             | Optional, default: null               | The function is started when element is out viewport                   |
+| [eutrepeOnActiveCallbackParams]     | Array                | Optional, default: []                 | Array of custom argumments for onActive callback                       |
+| [eutrepeOnUnactiveCallbackParams]   | Array                | Optional, default: []                 | Array of custom argumments for onUnactive callback                     |
+| [eutrepeActiveClass]                | string               | Optional, default: 'in-viewport'      | Custom class for visible element                                       |
+
+*Intersection Observe: [developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+
+<br />
+
+### Intersection Observe default config:
+
+```typescript
+const defaultConfig: IIntersectionConfig = {
+    root      : null,
+    rootMargin: '0px',
+    threshold : [0]
+  }
+```
+
+<br />
 
 
 # Interfaces
