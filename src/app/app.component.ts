@@ -8,17 +8,17 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   onActive(arg1, arg2, arg3) {
-    console.log(arg1); // 'some_text'
-    console.log(arg2); // 1
-    console.log(arg3); // true
+    // console.log(arg1); // 'some_text'
+    // console.log(arg2); // 1
+    // console.log(arg3); // true
   }
 
   onUnactive(arg1, arg2) {
-    console.log(arg1); // 100
-    console.log(arg2); // false
+    // console.log(arg1); // 100
+    // console.log(arg2); // false
   }
 
   onChanage(event: boolean) {
-    console.log('Current status: ', event);
+    // console.log('Current status: ', event);
   }
 }

@@ -1,15 +1,9 @@
-<section class="section1" ngxEutrepeIsInViewport>
+<section class="section1" ngxEutrepeIsInViewport [eutrepeInvokeOnce]="false">
   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum, facere.</p>
 </section>
 
 <section class="section1"
-    [ngxEutrepeIsInViewport]="{threshold: [0, 0.5, 1]}"
-    [eutrepeOnActiveCallback]="onActive.bind(this)"
-    [eutrepeOnUnactiveCallback]="onUnactive.bind(this)"
-    [eutrepeOnActiveCallbackParams]="['some_text', 1, true]"
-    [eutrepeOnUnactiveCallbackParams]="[100, false]"
-    [eutrepeInvokeOnce]="false"
-    (eutrepeViewportChange)="onChanage($event)"
+
     >
   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum, facere.</p>
 </section>
