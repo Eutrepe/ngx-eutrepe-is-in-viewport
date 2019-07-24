@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 
 import { NgxEutrepeIsInViewportModule } from './modules/ngx-eutrepe-is-in-viewport.module';
-import { WINDOW } from './modules/windowToken/window-token';
+import { WINDOW_IN_VIEWPORT } from './modules/windowToken/window-token';
 
 @NgModule({
     declarations: [
@@ -17,7 +17,7 @@ import { WINDOW } from './modules/windowToken/window-token';
         NgxEutrepeIsInViewportModule
     ],
     providers: [
-      {provide: WINDOW, useValue: window},
+      {provide: WINDOW_IN_VIEWPORT, useValue: window},
     ],
     bootstrap: [ AppComponent ],
     exports: []

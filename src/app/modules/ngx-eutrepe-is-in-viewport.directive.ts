@@ -1,6 +1,6 @@
 import { Directive, Output, HostBinding, AfterViewInit, OnDestroy, OnInit, ElementRef, EventEmitter, Input, Inject } from '@angular/core';
 
-import { WINDOW } from './windowToken/window-token';
+import { WINDOW_IN_VIEWPORT } from './windowToken/window-token';
 import { DOCUMENT } from '@angular/common';
 
 export interface IIntersectionConfig  {
@@ -43,7 +43,7 @@ export class NgxEutrepeIsInViewportDirective implements AfterViewInit, OnDestroy
 
 
   constructor(
-    @Inject(WINDOW) private window: Window,
+    @Inject(WINDOW_IN_VIEWPORT) private window: Window,
     @Inject(DOCUMENT) private document: Document,
     private el: ElementRef
   ) {

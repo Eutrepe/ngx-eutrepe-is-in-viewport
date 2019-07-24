@@ -27,7 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 
 import { NgxEutrepeIsInViewportModule } from '@eutrepe/is-in-viewport';
-import { WINDOW } from '@eutrepe/is-in-viewport';
+import { WINDOW_IN_VIEWPORT } from '@eutrepe/is-in-viewport';
 
 @NgModule({
     declarations: [
@@ -39,7 +39,7 @@ import { WINDOW } from '@eutrepe/is-in-viewport';
         NgxEutrepeIsInViewportModule
     ],
      providers: [
-      {provide: WINDOW, useValue: window},
+      {provide: WINDOW_IN_VIEWPORT, useValue: window},
     ],
     bootstrap: [ AppComponent ],
     exports: []

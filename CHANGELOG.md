@@ -1,3 +1,9 @@
+## ngxEutrepeIsInViewport - v4.1.1 (24/07/2019)
+
+### Fixed
+
+* Rename WINDOW TOKEN name. WINDOW -> WINDOW_IN_VIEWPORT
+
 ## ngxEutrepeIsInViewport - v4.1.0 (23/07/2019)
 
 ### New Features:
