@@ -1,4 +1,4 @@
-import { Directive, Output, HostBinding, AfterViewInit, OnDestroy, OnInit, ElementRef, EventEmitter, Input, Inject } from '@angular/core';
+import { Directive, Output, AfterViewInit, OnDestroy, OnInit, ElementRef, EventEmitter, Input, Inject } from '@angular/core';
 
 import { WINDOW_IN_VIEWPORT } from './windowToken/window-token';
 import { DOCUMENT } from '@angular/common';
@@ -23,7 +23,7 @@ export class NgxEutrepeIsInViewportDirective implements AfterViewInit, OnDestroy
   @Input() eutrepeOnUnactiveCallback                                  : Function            = null;
   @Input() eutrepeOnActiveCallbackParams                              : Array<any>          = [];
   @Input() eutrepeOnUnactiveCallbackParams                            : Array<any>          = [];
-  @Input() eutrepeInvokeOnce                                          : boolean             = false;
+  @Input() eutrepeInvokeOnce                                          : boolean             = true;
   @Input() eutrepeActiveClass                                         : string              = 'in-viewport';
   @Input('ngxEutrepeIsInViewport') eutrepeIntersectionConfig          : IIntersectionConfig = {};
 
@@ -37,7 +37,7 @@ export class NgxEutrepeIsInViewportDirective implements AfterViewInit, OnDestroy
 
   private defaultConfig: IIntersectionConfig = {
     root      : null,
-    rootMargin: '0px',
+    rootMargin: '-20% 0px -80%',
     threshold : [0]
   };
 
@@ -81,10 +81,6 @@ export class NgxEutrepeIsInViewportDirective implements AfterViewInit, OnDestroy
         entries.forEach( (entry: any) => {
 
           if (entry.isIntersecting) {
-            if (this.eutrepeInvokeOnce && this.observer) {
-              this.observer.unobserve(this.el.nativeElement);
-            }
-
             entry.target.classList.add(this.eutrepeActiveClass);
 
             this.wasActived  = true;
@@ -96,6 +92,10 @@ export class NgxEutrepeIsInViewportDirective implements AfterViewInit, OnDestroy
 
             if (this.eutrepeOnActiveCallback && typeof(this.eutrepeOnActiveCallback) === 'function') {
               this.eutrepeOnActiveCallback(...this.eutrepeOnActiveCallbackParams);
+            }
+
+            if (this.eutrepeInvokeOnce && entry.target.classList.contains(this.eutrepeActiveClass) && this.observer) {
+              this.observer.unobserve(this.el.nativeElement);
             }
 
           } else {

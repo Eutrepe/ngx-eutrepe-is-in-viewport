@@ -1,15 +1,22 @@
 .section1 {
-  height: 1000px;
-  background-color: red;
-}
+  height: 500px;
+  background-color: black;
 
-.in-viewport {
-    background-color: yellow;
+  &.in-viewport {
+    background-color: gray;
   }
 
+}
 
-.out-viewport {
 
+
+p {
+  padding: 20px;
+  color: #fff;
+
+  &.in-viewport {
+    background-color: red;
+  }
 }
 
 

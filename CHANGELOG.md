@@ -1,3 +1,10 @@
+## ngxEutrepeIsInViewport - v4.1.2 (25/07/2019)
+
+### Fixed
+
+* Change default value for `eutrepeInvokeOnce`
+* Fix for destroy observe
+
 ## ngxEutrepeIsInViewport - v4.1.1 (24/07/2019)
 
 ### Fixed
