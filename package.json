@@ -1,6 +1,6 @@
 {
   "name": "@eutrepe/is-in-viewport",
-  "version": "4.1.2",
+  "version": "4.1.3",
   "description": "Directive for Angular 4 based on Intersection observe to detect element in viewport",
   "license": "MIT",
   "repository": {
