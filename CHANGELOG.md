@@ -1,3 +1,10 @@
+## ngxEutrepeIsInViewport - v4.1.3 (26/07/2019)
+
+### Fixed
+
+* Change default value for `rootMargin`
+
+
 ## ngxEutrepeIsInViewport - v4.1.2 (25/07/2019)
 
 ### Fixed
