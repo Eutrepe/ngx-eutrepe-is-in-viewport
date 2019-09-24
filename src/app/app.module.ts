@@ -3,14 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import { NgxEutrepeIsInViewportDirective, WINDOW_IN_VIEWPORT } from 'ngx-eutrepe-is-in-viewport';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NgxEutrepeIsInViewportDirective
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    {provide: WINDOW_IN_VIEWPORT, useValue: window}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

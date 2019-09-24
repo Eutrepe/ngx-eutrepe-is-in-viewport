@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
-import { NgxEutrepeIsInViewportComponent } from './ngx-eutrepe-is-in-viewport.component';
-import { IsInViewportDirective } from './is-in-viewport.directive';
 import { NgxEutrepeIsInViewportDirective } from './ngx-eutrepe-is-in-viewport.directive';
 
 @NgModule({
-  declarations: [NgxEutrepeIsInViewportComponent, IsInViewportDirective, NgxEutrepeIsInViewportDirective],
+  declarations: [NgxEutrepeIsInViewportDirective],
   imports: [
   ],
-  exports: [NgxEutrepeIsInViewportComponent]
+  exports: [NgxEutrepeIsInViewportDirective]
 })
 export class NgxEutrepeIsInViewportModule { }

@@ -1,6 +1,25 @@
 {
-  "name": "ngx-eutrepe-is-in-viewport",
-  "version": "0.0.1",
+  "name": "@eutrepe/is-in-viewport",
+  "version": "8.0.0",
+  "description": "Directive for Angular 8 based on Intersection observe to detect element in viewport",
+  "author": "Maciej Bobrowski",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eutrepe/ngx-eutrepe-is-in-viewport.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Eutrepe/ngx-eutrepe-is-in-viewport/issues"
+  },
+  "keywords": [
+    "angular",
+    "angular 8",
+    "javascript",
+    "typescript",
+    "directive",
+    "viewport"
+  ],
+  "license": "MIT",
+  "private": false,
   "peerDependencies": {
     "@angular/common": "^8.0.3",
     "@angular/core": "^8.0.3"
