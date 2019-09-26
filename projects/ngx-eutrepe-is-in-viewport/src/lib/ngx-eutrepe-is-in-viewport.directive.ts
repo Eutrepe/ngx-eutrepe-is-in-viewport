@@ -15,7 +15,7 @@ export interface IViewportEvent  {
 
 /** @dynamic */
 @Directive({
-  selector: '[ngxEutrepeNgxEutrepeIsInViewport]'
+  selector: '[ngxEutrepeIsInViewport]'
 })
 export class NgxEutrepeIsInViewportDirective implements OnInit, AfterViewInit, OnDestroy {
 
@@ -37,7 +37,7 @@ export class NgxEutrepeIsInViewportDirective implements OnInit, AfterViewInit, O
 
   private defaultConfig: IIntersectionConfig = {
     root      : null,
-    rootMargin: '0px 0px -50%',
+    rootMargin: '0px 0px -30%',
     threshold : [0]
   };
 

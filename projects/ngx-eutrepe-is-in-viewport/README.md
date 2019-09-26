@@ -103,7 +103,7 @@ export class AppModule { }
 ```typescript
 const defaultConfig: IIntersectionConfig = {
     root      : null,
-    rootMargin: '0px 0px -50%',
+    rootMargin: '0px 0px -30%',
     threshold : [0]
   }
 ```

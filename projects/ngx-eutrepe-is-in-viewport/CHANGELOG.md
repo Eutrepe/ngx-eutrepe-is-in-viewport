@@ -1,3 +1,11 @@
+## ngxEutrepeIsInViewport - v8.1.0 (26/09/2019)
+
+### Fix Bugs:
+
+* Rename directive inputs
+* Change default values
+
+
 ## ngxEutrepeIsInViewport - v8.0.0 (24/09/2019)
 
 ### New Features:
